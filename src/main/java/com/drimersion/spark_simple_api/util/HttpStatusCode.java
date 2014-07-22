@@ -3,7 +3,7 @@ package com.drimersion.spark_simple_api.util;
 public enum HttpStatusCode {
 
 	_404(404, "not_found",
-			"El recurso al que está tratando de acceder no fué encontrado."), _409(
+			"El recurso al que está tratando de acceder no fue encontrado."), _409(
 			409,
 			"conflict",
 			"Se ha encotrado un conflicto al momento de realizar la operación sobre el recurso especificado."), _422(
