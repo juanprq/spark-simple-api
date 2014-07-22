@@ -3,6 +3,7 @@ package com.drimersion.spark_simple_api;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import spark.Spark;
 
@@ -40,6 +41,7 @@ public class App {
 		 * Configuración de toda respuesta
 		 */
 		Spark.after((request, response) -> {
+			response.header("Request-Id", UUID.randomUUID().toString());
 			response.header("Accept",
 					"application/drimersion.test+json; version=1");
 			response.type("application/json; charset=UTF-8");
