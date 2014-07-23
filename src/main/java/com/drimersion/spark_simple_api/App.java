@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import spark.Spark;
 
 import com.drimersion.spark_simple_api.model.User;
@@ -34,15 +37,21 @@ public class App {
 	 *            aplicación.
 	 */
 	public static void main(String[] args) {
+		/* Creación de logger */
+		Logger logger = LoggerFactory.getLogger(App.class);
 		/* Referencia a los usuarios del sistema */
 		Map<Integer, User> users = initializeUsers();
 		/* Inicialización del objeto Gson para el parseo de formato json */
 		Gson gson = new Gson();
 
+		logger.info("Se inicia el proceso del servidor.");
+
 		/**
 		 * Configuración de toda respuesta
 		 */
 		Spark.after((request, response) -> {
+			logger.info("Configuración de la respuesta después del procesado de la ruta.");
+
 			response.header("Request-Id", UUID.randomUUID().toString());
 			response.header("Accept",
 					"application/drimersion.test+json; version=1");
@@ -53,6 +62,7 @@ public class App {
 		 * Servicio que responde la colección de usuarios del sistema.
 		 */
 		Spark.get("/users", (request, response) -> {
+			logger.info("Procesando ruta GET '/users'");
 			/* Se retorna la colección de usuarios */
 			return users;
 		}, new JsonTransformer());
@@ -64,6 +74,7 @@ public class App {
 		Spark.get(
 				"/users/:id",
 				(request, response) -> {
+					logger.info("Procesando ruta GET '/users/:id'");
 					/* Inicialización del cuerpo del mensaje con un string vacio */
 					Object body = new String();
 
@@ -101,6 +112,7 @@ public class App {
 		Spark.post(
 				"/users",
 				(request, response) -> {
+					logger.info("Procesando la ruta POST '/users'");
 					/* Inicialización del cuerpo del mensaje. */
 					Object body = new String();
 
@@ -149,6 +161,7 @@ public class App {
 		Spark.put(
 				"/users/:id",
 				(request, response) -> {
+					logger.info("Procesando la ruta PUT '/users/:id'");
 					/* Se inicializa el cuerpo del mensaje vacio. */
 					Object body = new String();
 					try {
@@ -201,6 +214,7 @@ public class App {
 		Spark.delete(
 				"/users/:id",
 				(request, response) -> {
+					logger.info("Procesando la ruta DELETE '/users/:id'");
 					/* Inicialización del cuerpo de la respuesta. */
 					Object body = new String();
 
