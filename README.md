@@ -18,7 +18,8 @@ Dependencias necesarias para la ejecución de la aplicación:
 
 Dependencias necesarias para la ejecución de las pruebas:
 
-* junit: 3.8.1
+* junit: 4.11
+* jcabi-http: 1.8
 
 Configuración para desarrollo local
 -----------------------------------
