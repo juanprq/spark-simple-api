@@ -23,4 +23,4 @@ Dependencias necesarias para la ejecución de las pruebas:
 Configuración para desarrollo local
 -----------------------------------
 
-Para el desarrollo local se emplea la herramienta maven para el manejo automático de dependencias que se encuentran descritas en el archivo *pom.xml*, el proyecto puede ser importado en eclipse y con el plugin para maven realizar toda la gestión necesaria para las dependencias; es necesario tener configurado en la herramienta java 1.8 ya que el código está escrito con bloques de código que se pasan como referencia en la especificación de rutas. 
+Para el desarrollo local se emplea la herramienta maven para el manejo de dependencias, las cuales se encuentran descritas en el archivo *pom.xml*; el proyecto puede ser importado en eclipse y usar el plugin para maven y realizar toda la gestión necesaria para las dependencias; es necesario tener configurado en la herramienta java 1.8 ya que el código está escrito con bloques que se pasan como referencia en la especificación de rutas. 
